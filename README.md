@@ -56,13 +56,13 @@ ENV SPRING_PROFILES_ACTIVE=production
 ENTRYPOINT ["java", "-jar", "app.jar"]
 
 # Ansible Playbooks
+
 1. Java Application Deployment
 
 ---
 - name: Deploy Java Application
   hosts: your_production_servers
   become: true
-
   tasks:
     - name: Update apt package cache
       apt:
@@ -85,12 +85,12 @@ ENTRYPOINT ["java", "-jar", "app.jar"]
         state: started
       notify:
         - Reload Nginx
-
   handlers:
     - name: Reload Nginx
       systemd:
         name: nginx
         state: restarted
+
 
 2. Configure Nginx as Reverse Proxy Playbook:
 
